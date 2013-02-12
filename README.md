@@ -13,4 +13,4 @@ Firefox: Get greesemonkey
 Contributers
 ############
 
-(1337)[https://github.com/1337]
+[1337](https://github.com/1337)
