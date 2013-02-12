@@ -17,11 +17,10 @@ window.addEventListener('load', function () {
                 oReq.onreadystatechange = function (oEvent) {
                   if (oReq.readyState === 4) {
                     if (oReq.status === 200) {
-                        console && console.log && console.log("Successfully polled D2L!");
+                      console && console.log && console.log("Successfully polled D2L!");
                     } else {
-                        console && console.error && console.error("Polling error: ", oReq.statusText);
+                      console && console.error && console.error("Polling error: ", oReq.statusText);
                     }
-                  }
                 };
                 oReq.send(null);
             } catch (err) {
