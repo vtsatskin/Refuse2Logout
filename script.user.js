@@ -15,13 +15,13 @@ window.addEventListener('load', function () {
                 var oReq = new XMLHttpRequest();
                 oReq.open("GET", POLL_URL, true);
                 oReq.onreadystatechange = function (oEvent) {
-                  if (oReq.readyState === 4) {
-                    if (oReq.status === 200) {
-                        console && console.log && console.log("Successfully polled D2L!");
-                    } else {
-                        console && console.error && console.log("Error", oReq.statusText);
+                    if (oReq.readyState === 4) {
+                        if (oReq.status === 200) {
+                            console && console.log && console.log("Successfully polled D2L!");
+                        } else {
+                            console && console.error && console.error("Error", oReq.statusText);
+                        }
                     }
-                  }
                 };
                 oReq.send(null);
             } catch (err) {
