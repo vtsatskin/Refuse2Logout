@@ -4,13 +4,13 @@
 // @include        http://learn.uwaterloo.ca/*
 // @include        https://learn.uwaterloo.ca/*
 // @description    Prevents uWaterloo's Desire2Learn from logging you out automatically
-// @version        0.0.1
+// @version        0.0.2
 // ==/UserScript==
 
 window.addEventListener('load', function () {
-    var POLL_INTERVAL = 10 * 6E4,  // 10 minutes in ms
-        POLL_URL = "/d2l/lp/homepage/home.d2l?ou=6606",
-        tapItLikeItsHot = function () {
+    var POLL_INTERVAL = 10 * 6E4 // 10 minutes in ms
+      , POLL_URL = "/d2l/lp/homepage/home.d2l?ou=6606"
+      , tapItLikeItsHot = function () {
             try {
                 var oReq = new XMLHttpRequest();
                 oReq.open("GET", POLL_URL, true);
@@ -19,7 +19,7 @@ window.addEventListener('load', function () {
                     if (oReq.status === 200) {
                         console && console.log && console.log("Successfully polled D2L!");
                     } else {
-                        console && console.error && console.log("Error", oReq.statusText);
+                        console && console.error && console.error("Polling error: ", oReq.statusText);
                     }
                   }
                 };
