@@ -9,7 +9,7 @@
 
 window.addEventListener('load', function () {
     var POLL_INTERVAL = 10 * 6E4 // 10 minutes in ms
-      , POLL_URL = "/d2l/lp/homepage/home.d2l?ou=6606"
+      , POLL_URL = "/d2l/lp/auth/session/extend"
       , tapItLikeItsHot = function () {
             try {
                 var oReq = new XMLHttpRequest();
@@ -21,6 +21,7 @@ window.addEventListener('load', function () {
                     } else {
                       console && console.error && console.error("Polling error: ", oReq.statusText);
                     }
+                  }
                 };
                 oReq.send(null);
             } catch (err) {
