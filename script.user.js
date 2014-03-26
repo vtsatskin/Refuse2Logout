@@ -7,7 +7,7 @@
 // @version        0.0.3
 // ==/UserScript==
 
-window.addEventListener('load', function () {
+function runAfterPageLoad() {
 	var POLL_INTERVAL = 10 * 6E4; // 10 minutes in ms
 	var POLL_URL = "/d2l/lp/auth/session/extend";
 
@@ -28,6 +28,7 @@ window.addEventListener('load', function () {
 
 	setInterval(tryTo(tapItLikeItsHot), POLL_INTERVAL);
 	tryTo(inject)(fuckTheWarnings);
+	log("Initialized RefuseToLogout.");
 
 	function fuckTheWarnings() {
 		function fakeAlert(msg) {
@@ -99,7 +100,6 @@ window.addEventListener('load', function () {
 	};
 
 	function inject(fn) {
-		console.log("injecting: ", fn.toString());
 		var script = document.createElement('script');
 		script.textContent = '(' + fn.toString() + ')()';
 		document.getElementsByTagName('head')[0].appendChild(script);
@@ -119,4 +119,14 @@ window.addEventListener('load', function () {
 	function error(/*args*/) {
 		console && console.error && console.error.apply(console, arguments);
 	}
-});
+}
+
+if (document.readyState === 'complete') {
+	runAfterPageLoad();
+} else {
+	document.addEventListener('readystatechange', function () {
+		if (document.readyState === 'complete') {
+			runAfterPageLoad();
+		}
+	});
+}
